@@ -1,0 +1,53 @@
+{
+  "name": "m32support",
+  "displayName": "m32support",
+  "description": "Language support for M32 assembly",
+  "version": "0.0.1",
+  "publisher": "RolandGreim",
+  "author": "Roland Greim",
+  "engines": {
+    "vscode": "^1.0.0"
+  },
+  "categories": [
+    "Languages"
+  ],
+  "main": "./out/src/extension",
+  "activationEvents": [
+    "onLanguage:M32"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "M32",
+        "aliases": [
+          "M32"
+        ],
+        "extensions": [
+          ".A32",
+          ".a32"
+        ],
+        "configuration": "./m32.configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "M32",
+        "scopeName": "source.assembly.m32",
+        "path": "./syntaxes/m32.tmLanguage"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
+    "compile": "node ./node_modules/vscode/bin/compile -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install"
+  },
+  "devDependencies": {
+    "typescript": "^2.0.10",
+    "vscode": "^1.0.3"
+  },
+  "dependencies": {
+    "vscode": "^1.0.3"
+  },
+  "license": "GPL-3.0"
+}

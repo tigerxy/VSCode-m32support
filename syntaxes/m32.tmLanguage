@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>A32</string>
+	</array>
+	<key>name</key>
+	<string>Assembly M32</string>
+	<key>patterns</key>
+	<array>
+		<dict>
+			<key>match</key>
+			<string>\b(ADD|SUB|AND|(X)?OR|NOT|MUL|DIV|MOD|MOV|CMP|NOP|HALT|JMP|J(N)?Z|JG(T|E)|CALL|RET(I)?|INT|PR(N|T|L)|ORG|OFFSET|EQU|D(S|W)|INCLUDE|END)\b</string>
+			<key>name</key>
+			<string>keyword.control</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>\b(PC|STATUS|R(0|1|2|3|4|5|5|7)|INTFLAGS|INTBASE|TIMER|TRELOAD|(U|S)?SP|(S|U)?BASE|(S|U)?LIMIT|TOS)\b</string>
+			<key>name</key>
+			<string>constant.language</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>\b[0-9]+\b</string>
+			<key>name</key>
+			<string>constant.numeric</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>\b[A-F0-9]+(H)\b</string>
+			<key>name</key>
+			<string>constant.numeric</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>\b(1|0)+(B)\b</string>
+			<key>name</key>
+			<string>constant.numeric</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>("|').*?("|')</string>
+			<key>name</key>
+			<string>string.quoted</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>(;)(.)*</string>
+			<key>name</key>
+			<string>comment.line</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>\b[\w]+\b</string>
+			<key>name</key>
+			<string>variable.other</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>(\*){2,}|(\@){2,}|(:){2,}|(\,){2,}|[\#\'\`\<\>\.]+</string>
+			<key>name</key>
+			<string>invalid.illegal</string>
+		</dict>
+	</array>
+	<key>scopeName</key>
+	<string>source.assembly.m32</string>
+	<key>uuid</key>
+	<string>32257fc7-0688-47c7-9540-f4c2d7afasdf</string>
+</dict>
+</plist>
