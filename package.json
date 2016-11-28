@@ -1,15 +1,28 @@
 {
   "name": "m32support",
-  "displayName": "m32support",
+  "displayName": "M32 Support",
   "description": "Language support for M32 assembly",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "publisher": "RolandGreim",
-  "author": "Roland Greim",
+  "author": {
+    "name": "Roland Greim - http://www.rolandgreim.de/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tigerxy/VSCode-m32support"
+  },
+  "bugs": {
+    "url": "https://github.com/tigerxy/VSCode-m32support/issues"
+  },
   "engines": {
     "vscode": "^1.0.0"
   },
   "categories": [
     "Languages"
+  ],
+  "keywords": [
+    "M32",
+    "Assembly"
   ],
   "main": "./out/src/extension",
   "activationEvents": [
