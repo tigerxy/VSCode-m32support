@@ -7,26 +7,28 @@ export class M32CompletionItemProvider implements vscode.CompletionItemProvider
         document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken):
         Thenable<vscode.CompletionItem[]>
     {
-        let list: vscode.CompletionList = new vscode.CompletionList()
-        let word = this.findWord(document, position)
-        console.log(word)
-        M32Shared
-            .constant
-            .concat(M32Shared.commands, this.scanDocForNames(document))
-            .filter(value =>
-            {
-                return value.name.startsWith(word)
-            })
-            .forEach(element =>
-            {
-                let item = new vscode.CompletionItem(element.name)
-                item.detail = element.detail
-                item.documentation = ""
-                element.doc.forEach(line => item.documentation += line + "\n")
-                item.kind = element.kind
-                list.items.push(item)
-            })
-        return list
+        return new Promise((resolve, reject) =>
+        {
+            let list: vscode.CompletionList = new vscode.CompletionList()
+            let word = this.findWord(document, position)
+            M32Shared
+                .constant
+                .concat(M32Shared.commands, this.scanDocForNames(document))
+                .filter(value =>
+                {
+                    return value.name.startsWith(word)
+                })
+                .forEach(element =>
+                {
+                    let item = new vscode.CompletionItem(element.name)
+                    item.detail = element.detail
+                    item.documentation = ""
+                    element.doc.forEach(line => item.documentation += line + "\n")
+                    item.kind = element.kind
+                    list.items.push(item)
+                })
+            resolve(list)
+        })
     }
 
     private findWord(document: vscode.TextDocument, position: vscode.Position): string
@@ -43,7 +45,8 @@ export class M32CompletionItemProvider implements vscode.CompletionItemProvider
             let nameExp = /^(?!ADD|SUB|AND|(X)?OR|NOT|MUL|DIV|MOD|MOV|CMP|NOP|HALT|JMP|J(N)?Z|JG(T|E)|CALL|RET(I)?|INT|PR(N|T|L)|ORG|OFFSET|EQU|D(S|W)|INCLUDE|END)([a-zA-Z])+/gm
 
             let match = line.match(nameExp)
-            if (match != null) {
+            if (match != null)
+            {
                 ret.push({
                     name: match[0],
                     detail: `Zeile ${index}`,
